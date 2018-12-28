@@ -1,0 +1,363 @@
+:root {
+    --main-bg-color: cadetblue;
+    --hidden-bg-color: #707777;
+    /* --main-bg-color: #da921b; */
+    --button-text-size: 18px;
+    --input-text-size: 16px;
+    --text-area-text-size: 1em;
+}
+
+@font-face {
+    font-family: inconsolata;
+    src: url(./../../dependencies/inconsolata.regular.ttf);
+}
+
+body{
+    font-size: 14px;
+    /* background-color: var(--hidden-bg-color); */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* background-color: #f0f8ff00; */
+}
+
+.line > div{
+    display: inline-block;
+}
+
+button:not(.deleteVar) {
+    font-size: var(--button-text-size);
+    margin-top: 5px;
+    border: none;
+    background-color: var(--main-bg-color);
+    padding: 5px 20px;
+    color: white;
+    outline: none;
+}
+
+li:hover, button:not(.deleteVar):hover{
+    background-color: #1f6d6f;
+    /* background-color: #b77c19; */
+}
+
+ul {
+    padding: 0px 0px;
+    margin: 0px;
+}
+
+li {
+    list-style-type: none;
+    background-color: var(--main-bg-color);
+    font-size: var(--button-text-size);
+    color: white;
+    padding: 5px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* panes */
+#scriptArea, #showWhen{
+    padding: 10px;
+    width:-webkit-fill-available;
+    margin: 5px 0px;
+    font-family: inconsolata;
+    font-size: 15px;
+    resize:vertical;
+    outline: none;
+    border: none;
+    /* border-color: lightgrey; */
+}
+
+textarea:disabled{
+    background-color: #ececec;
+    color: #929292;
+    border: 1px solid !important;
+    border-color: lightgrey !important;
+}
+
+.pane{
+    background-color: #ececec;
+    margin: 10px;
+    overflow: hidden;
+}
+
+#vars {
+    grid-area: vars;
+    grid-row: 1;
+    padding: 20px
+}
+#buts {
+  grid-area: buts;
+  grid-row: 2 / auto;
+  background-color: #00000000;
+}
+#editor {
+  grid-area: edit;
+  grid-row: 2 / auto;
+}
+
+#left-pane {
+  grid-area: blank;
+  grid-row: 1;
+}
+#right-pane {
+  grid-area: blankr;
+  grid-row: 1;
+}
+.grid-wrapper {
+  margin-top: 20px;
+  display: grid;
+  grid-template-areas: 
+  'blank vars vars vars vars blankr'    
+  'blank buts edit edit edit blankr';
+  /* 'blank vars vars vars vars save blankr'    
+  'blank buts edit edit edit edit blankr'; */
+  /* 'blank vars vars vars vars vars vars vars save blankr' 
+  'blank buts buts edit edit edit edit edit edit blankr'; */
+  grid-gap: 10px;
+  padding: 10px;
+  grid-auto-columns: 1fr;
+}
+.split{
+    margin: 10px 0px 0px 0px;
+}
+
+code{
+    background-color: #807f7d;
+    padding: 5px 15px;
+    color: white;
+    font-family: inconsolata;
+}
+
+p[title]{
+    margin-bottom: 0px;
+}
+
+/* hide split if it's there's no buttons before */
+#buttons-list>.split:nth-child(1){
+    margin: 0px;
+}
+
+/* checkboxes styles, thx to https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_checkbox*/
+
+.container {
+    width: max-content;
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    /* font-size: 22px; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* margin-top: 5px; */
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--hidden-bg-color);
+    margin-top: -1px;
+}
+
+/* On mouse-over, add a grey background color */
+/* .container:hover input ~ .checkmark {
+    background-color: #ccc;
+} */
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #5f9ea0;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+label{
+    display: inline-block;
+    width: 100%;
+}
+
+#nameInput{
+    background-color: #1f6d6f00;
+    color:  white;
+    width: 60%;
+    margin: 0px;
+}
+
+#name-header{
+    width: 100%;
+    color: white;
+    font-size: 30px;
+    padding: 5px;
+    padding-left: 20px;
+    position: relative;
+}
+
+#name-header>img{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    margin-left: 5px;
+    bottom: -2px;
+    right: 10px;
+}
+
+#editor-content{
+    padding: 20px;
+    overflow: hidden;
+}
+
+.shadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#save-panel {
+    position: fixed;
+    top: 40px;
+    right: 10%;
+}
+
+#save{
+    float: right;
+}
+
+/* delete button css */
+
+.deleteVar {
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-left: 5px;
+    top: -3px;
+    right: 0px;
+}
+
+.deleteVar:hover::before, .deleteVar:hover::after {
+    background: cadetblue;
+}
+
+.deleteVar::before, .deleteVar::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: 2px;
+    background: #000;
+    border-radius: 5px;
+}
+
+.deleteVar::before {
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.deleteVar::after {
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+#name-header .deleteVar::before, #name-header .deleteVar::after{
+    height: 2px;
+    top: 50%;
+    left: 0;
+    margin-top: px;
+    background: white;
+}
+
+#name-header .deleteVar{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    top: 5px;
+    right: 40px;
+}
+
+#name-header  .deleteVar:hover::before, #name-header  .deleteVar:hover::after {
+    background: var(--hidden-bg-color);
+}
+
+.empty {
+    border: 1px solid;
+}
+
+/* variables css */
+input[type='text']{
+    font-size: 1em;
+    border: none;
+    outline: none;
+}
+
+.varline input{
+    width: 100%;
+    padding-left: 5px;
+}
+
+.varline{
+    position: relative;
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+.varline > div{
+    display: inline-block;
+}
+
+.varName{
+    position: absolute;
+    width: 150px;
+    min-width: 100px;
+    height: 100%;
+}
+
+.varValue{
+    position: absolute;
+    left: 160px;
+    right: 30px;
+    height: 100%;
+}

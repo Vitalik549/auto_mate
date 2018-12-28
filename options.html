@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>Settings|Auto Mate</title>
+</head>
+<link href="src/options/options.css" rel="stylesheet" type="text/css">
+
+<body>
+        <div id='app'>
+                <div class='grid-wrapper'>
+                        <div id="left-pane"></div>
+
+                        <div id='vars' class='pane shadow'>
+                                <div id="variables"></div>
+                                <button id="add-variable">Add variable</button>
+                        </div>
+
+                        <div class='pane' id="editor"></div>
+
+                        <div id='buts' class='pane'>
+                                <ul id='buttons-list'></ul>
+                                <button id="add-button">Add button</button>
+                        </div>
+
+                        <div id="right-pane"></div>
+
+                        <div id='save-panel'>
+                                <button id="save">Save</button>
+                                <div id="status"></div>
+                        </div>
+                </div>
+
+        </div>
+
+        <script src="dependencies/jquery.js"></script>
+        <script src="dependencies/jquery-ui.min.js"></script>
+        <script src="dependencies/underscore.js"></script>
+        <script src="dependencies/backbone-min.js"></script>
+
+        <script src="src/defaults.js"></script>
+        <script src="src/models/buttons.js"></script>
+        <script src="src/models/variables.js"></script>
+        <script src="src/models/storage.js"></script>
+
+        <script src="src/options/views/variablesView.js"></script>
+        <script src="src/options/views/editorView.js"></script>
+        <script src="src/options/views/buttonsView.js"></script>
+        <script src="src/options/views/appView.js"></script>
+        <script src="src/main.js"></script>
+
+</body>
+
+</html>
